@@ -1,0 +1,164 @@
+:root {
+  --bg: #FFFFFF;          /* основной фон */
+  --surface: #F5F5F5;     /* блоки */
+  --text: #2B2B2B;        /* основной текст */
+  --muted: #6B6B6B;       /* вторичный текст */
+
+  --primary: #D4A373;     /* дерево / акцент */
+  --primary-dark: #B07C4F;
+
+  --dark: #111111;        /* заголовки / премиум */
+  --border: #E8E8E8;
+
+  --success: #2E7D32;
+  --danger: #C62828;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:var(--primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.project-item h2 {
+    margin: 10px 0;
+    font-size: 1.4em;
+}
+
+.project-item p {
+    font-size: 1em;
+    color: #555;
+}
+
+.project-item a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    /* position: absolute; */
+    width: calc(100% - 40px) ;
+    bottom: 0;
+}
+
+/* style PROJECTS */
+.price-section {
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.price-section h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+}
+
+.price-section p {
+    font-size: 1.1em;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.price-list {
+    display: grid;
+    grid-template-columns: auto-fit repeat(3, 1fr);
+    gap: 20px;
+}
+
+.price-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.price-item h3 {
+    color: #007BFF;
+    font-size: 1.5em;
+}
+
+.price-item .price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+}
+
+.order-button {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.order-button:hover {
+    background-color: #0056b3;
+}
+@media (max-width: 768px) {
+  .project-list {
+    grid-template-columns: 1fr; /* все в один столбец */
+  }
+}

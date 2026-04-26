@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Проекты компании Vsize — успешные работы по изготовлению корпусной мебели на заказ. Посмотрите примеры наших проектов и решений для клиентов.">
+    <title>Наши проекты - Vsize</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <%- include('nav') %>
+        <h1>Наши проекты</h1>
+    </header>
+
+    <main>
+        <section class="project-list">
+            <article class="project-item">
+                <img src="img/office.jpeg" alt="Проект 1">
+                <h2>Проект 1: Мебель для офиса</h2>
+                <p>Этот проект включает в себя создание индивидуальной офисной мебели, которая идеально подошла под требования клиента. Стильный и функциональный дизайн.</p>
+                <a href="/project-details/1">Подробнее</a>
+            </article>
+
+            <article class="project-item">
+                <img src="img/home.jpg" alt="Проект 2">
+                <h2>Проект 2: Мебель для дома</h2>
+                <p>Проект по созданию мебели для дома с акцентом на уют и практичность. Мы использовали высококачественные материалы, чтобы создать идеальные условия для жизни.</p>
+                <a href="/project-details/2">Подробнее</a>
+            </article>
+
+            <article class="project-item">
+                <img src="img/cafe.jpg" alt="Проект 3">
+                <h2>Проект 3: Мебель для кафе</h2>
+                <p>Уникальный проект по разработке и установке мебели для кафе с учетом стиля заведения и максимальной удобности для гостей.</p>
+                <a href="/project-details/3">Подробнее</a>
+            </article>
+        </section>
+    </main>
+
+    <%- include('footer') %>
+
+</body>
+<script defer src="js/main.js"></script>
+</html>

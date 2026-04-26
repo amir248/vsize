@@ -1,0 +1,17 @@
+{
+  "name": "vsize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vsize.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "pm2": "^6.0.14"
+  }
+}
