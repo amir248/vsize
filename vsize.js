@@ -11,6 +11,9 @@ app.set('view engine', 'ejs');
 // папка с шаблонами
 app.set('views', './views');
 
+app.get('/search', (req, res) => {
+    res.render('search');
+});
 // главная страница
 app.get('/', (req, res) => {
     res.render('index');
@@ -27,7 +30,9 @@ app.get('/map', (req, res) => {
 // app.get('/', (req, res) => {
 //     res.send('Vsize Express Server работает 🚀');
 // });
-
+app.get('/custom-cabinet-furniture', (req, res)=>{
+    res.render('postOne',{});
+});
 // пример API
 app.get('/api/status', (req, res) => {
     res.json({
@@ -35,6 +40,10 @@ app.get('/api/status', (req, res) => {
         server: 'vsize',
         time: new Date()
     });
+});
+// 404 middleware — ставим после всех маршрутов
+app.use((req, res, next) => {
+  res.status(404).render('404',{}); // ставим HTTP статус 404
 });
 
 app.listen(PORT, () => {

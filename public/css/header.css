@@ -1,0 +1,124 @@
+/* #HEADER */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    /* padding: 20px 60px; */
+    border-bottom: 1px solid #eee;
+    z-index: 10;
+    text-align: center;
+    /* transition: all ease 1s; */
+}
+header h1 {
+  /* font-size: 18px; */
+  letter-spacing: 2px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* menu */
+.menu-list {
+    height:85px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    max-height: 0;           /* изначально скрыто */
+    /* transition: max-height 0.3s ease-out; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all ease 1s;
+    right:0;
+    width:100%;
+    position: absolute;
+}
+
+.menu-list li {
+    padding: 10px 0;
+}
+
+.menu-list li a {
+    text-decoration: none;
+    color: #333;
+    /* transition: all ease 1s; */
+}
+/* .open {
+    min-height:0vh;
+    max-height: 0vh;       
+    transition: all ease 1s;
+} */
+.menu-list.open {
+    min-height:100vh;
+    max-height: 100vh;       /* достаточно для всех пунктов меню */
+    transition: all ease 1s;
+
+    position: absolute;
+    display: flex;
+    text-align: center;
+    right: 0;
+    background:rgba(255,255,255,0.7);
+    width: 100%;
+}
+
+@media(max-width:768px){
+    #menu-list > li > a{
+        margin:33px;
+        padding:17px;
+    }
+    .menu-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 0px;
+        max-height: 0px;
+        min-height:0px;
+    }
+    #menu-list > li > a{
+        font-size:33px;
+    }
+}
+@media (min-width: 768px) {
+    .menu-list {
+        max-height: none;    /* на десктопе меню всегда видно */
+        display: flex;
+        gap: 20px;
+        transition: all ease 1s;
+        position: relative;
+    }
+    .menu-list{
+        display: flex;
+        flex-direction: row;
+    }
+    #menu-toggle {
+        display: none;       /* кнопка скрыта на больших экранах */
+    }
+    header{
+        align-items: center;
+    }
+}
+#menu-toggle{
+    margin-top:17px;
+}

@@ -3,7 +3,7 @@ function view_year(){
         function year(){
             document.getElementById("year").textContent= new Date().getFullYear();
         }
-        resolve(year);
+        resolve(year());
     });
 };
 

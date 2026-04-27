@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        main{
+            display: grid;
+            align-content:space-between;
+            justify-items:center;
+            height:100vh;
+            /* align-content: center; */
+        }
+        main > section{
+            display:grid;
+            justify-content: center;
+            align-content: center;
+            min-height:calc(100vh - 58px);
+        }
+    </style>
+    <script async src="https://cse.google.com/cse.js?cx=64a117fd18d214ac7"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>VSIZE</h1>
+            <%- include('nav') %>
+        </header>
+    
+        <section>
+            <div class="gcse-search"></div>
+        </section>
+        <%- include('footer') %>
+    </main>
+</body>
+<script defer src="js/main.js"></script>
+</html>

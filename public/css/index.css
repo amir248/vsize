@@ -20,41 +20,9 @@ body {
 }
 
 /* HEADER */
-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  border-bottom: 1px solid #eee;
-  z-index: 10;
-  text-align:center;
-}
 
-header h1 {
-  font-size: 18px;
-  letter-spacing: 2px;
-}
 
-header nav ul {
-    list-style: none;
-    padding: 0;
-}
 
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: bold;
-}
 
 /* HERO */
 .hero {
@@ -89,8 +57,12 @@ header nav ul li a {
   color: white;
   text-decoration: none;
   display: inline-block;
+  transition:all ease 1s;
 }
-
+.btn:hover {
+  background: #fff0e4;
+  color:#1a1a1a;
+}
 /* SECTIONS */
 section {
   padding: 100px 80px;
@@ -134,8 +106,13 @@ section {
 .step {
   padding: 20px;
   border-left: 3px solid var(--accent);
+  transition: all ease 1s; 
 }
-
+.step:hover {
+  background: var(--accent);
+  color:white;
+  border-left: 3px solid var(--dark);
+}
 /* FORM */
 .form {
   background: var(--soft);
@@ -167,44 +144,27 @@ footer {
   .grid {grid-template-columns: 1fr;}
   .steps {grid-template-columns: 1fr;}
 }
-
-/* menu */
-.menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    max-height: 0;           /* изначально скрыто */
-    transition: max-height 0.3s ease-out;
-}
-
-.menu-list li {
-    padding: 10px 0;
-}
-
-.menu-list li a {
-    text-decoration: none;
-    color: #333;
-    
-}
-
-.menu-list.open {
-    max-height: 500px;       /* достаточно для всех пунктов меню */
+@media(max-width:1920px){
+  .hero {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: image-set(
+        url('/img/fon-1920.avif') type('image/avif') 1x,
+        url('/img/fon-1920.webp') type('image/webp') 1x,
+        url('/img/fon-1920.jpeg') type('image/jpeg') 1x
+    );
+  }
 }
 @media(max-width:768px){
-    #menu-list > li > a{
-        margin:33px;
-        padding:17px;
-    }
-}
-@media (min-width: 768px) {
-    .menu-list {
-        max-height: none;    /* на десктопе меню всегда видно */
-        display: flex;
-        gap: 20px;
-    }
-
-    #menu-toggle {
-        display: none;       /* кнопка скрыта на больших экранах */
-    }
+  .hero {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: image-set(
+        url('/img/fon-mobile.avif') type('image/avif') 1x,
+        url('/img/fon-mobile.webp') type('image/webp') 1x,
+        url('/img/fon-mobile.jpeg') type('image/jpeg') 1x
+    );
+  }
 }
