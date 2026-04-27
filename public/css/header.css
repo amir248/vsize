@@ -1,3 +1,11 @@
+:root {
+  --bg: #ffffff;
+  --soft: #f6f6f6;
+  --text: #1f1f1f;
+  --muted: #666;
+  --accent: #c47a3c;
+  --dark: #1a1a1a;
+}
 /* #HEADER */
 header {
     position: fixed;
@@ -62,7 +70,10 @@ header nav ul li a {
 .menu-list li a {
     text-decoration: none;
     color: #333;
-    /* transition: all ease 1s; */
+}
+.menu-list li a:hover{
+    color:var(--accent);
+    transition: all ease 1s;
 }
 /* .open {
     min-height:0vh;
