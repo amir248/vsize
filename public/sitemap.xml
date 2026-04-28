@@ -31,4 +31,19 @@
     <changefreq>never</changefreq>
     <priority>0.7</priority>
   </url>
+    <url>
+    <loc>https://vsize.ru/article/office-furniture</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vsize.ru/article/home-furniture</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vsize.ru/article/cafe-furniture</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

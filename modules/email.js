@@ -1,11 +1,12 @@
+require('dotenv').config();
+// mailer.js
 const express = require('express');
 const nodemailer = require('nodemailer');
-const app = express();
 
-app.use(express.json()); // чтобы принимать JSON
+const router = express.Router();
 
 // Роут для отправки письма
-app.post('/send-mail', async (req, res) => {
+router.post('/send-mail', async (req, res) => {
     const { to, subject, text } = req.body;
 
     if (!to || !subject || !text) {
@@ -13,24 +14,15 @@ app.post('/send-mail', async (req, res) => {
     }
 
     try {
-        // Настройка транспортера (пример для Gmail)
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            service: 'gmail', // можно заменить на любой SMTP
             auth: {
-                user: 'твояпочта@gmail.com',
-                pass: 'пароль_или_app_password'
+                user: 'chikchicly@gmail.com',
+                pass: process.env.SECRET_PASS
             }
         });
 
-        // Письмо
-        const mailOptions = {
-            from: 'твояпочта@gmail.com',
-            to,
-            subject,
-            text
-        };
-
-        // Отправка
+        const mailOptions = { from: 'chikchicly@gmail.com', to, subject, text };
         await transporter.sendMail(mailOptions);
 
         res.json({ success: true, message: 'Письмо отправлено' });
@@ -40,4 +32,4 @@ app.post('/send-mail', async (req, res) => {
     }
 });
 
-// app.listen(3000, () => console.log('Server running on port 3000'));
+module.exports = router;

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/index.css">
 
 <meta name="description" content="Vsize — компания, специализирующаяся на производстве корпусной мебели на заказ в Москве. Мы предлагаем индивидуальные решения для вашего интерьера с использованием качественных материалов, гарантируя стиль, функциональность и долговечность мебели для дома и офиса.">
+<link rel="canonical" href="https://vsize.ru" />
 <meta name="yandex-verification" content="8f08dad3ede64bf4" />
 </head>
 
@@ -64,16 +65,110 @@
   <h2 class="title">Оставить заявку</h2>
   <p class="subtitle">Мы перезвоним и сделаем расчёт стоимости бесплатно</p>
 
-  <div class="form">
-    <input type="text" placeholder="Имя">
-    <input type="tel" placeholder="Телефон">
-    <textarea rows="4" placeholder="Что хотите заказать?"></textarea>
-    <a class="btn" href="#">Отправить</a>
-  </div>
+  <form id="orderForm" class="form">
+    <input type="text" name="name" placeholder="Имя">
+    <input type="tel" name="phone" placeholder="Телефон">
+    <textarea rows="4" name="message" placeholder="Что хотите заказать?"></textarea>
+    <button class="btn" type="submit">Отправить</button>
+  </form>
 </section>
 
 <%- include('footer') %>
 
 </body>
   <script defer src="js/main.js"></script>
+  <script>
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+    e.preventDefault(); // предотвращаем обычную отправку формы
+
+    const form = e.target;
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const message = form.message.value.trim();
+
+    // Простая валидация
+    if (!name) {
+        alert('Пожалуйста, введите имя');
+        form.name.focus();
+        return;
+    }
+
+    if (!phone) {
+        alert('Пожалуйста, введите телефон');
+        form.phone.focus();
+        return;
+    }
+
+    // Проверка телефона (только цифры и +)
+    const phonePattern = /^[\d+]{5,20}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Введите корректный телефон (только цифры и +)');
+        form.phone.focus();
+        return;
+    }
+
+    if (!message) {
+        alert('Пожалуйста, напишите, что хотите заказать');
+        form.message.focus();
+        return;
+    }
+
+    // Если всё верно, отправляем на сервер
+    const data = {
+        to: 'daliashat@gmail.com',
+        subject: `Заявка VSIZE от ${name}`,
+        text: `Имя: ${name}\nТелефон: ${phone}\nСообщение: ${message}`
+    };
+
+    try {
+        const res = await fetch('/api/send-mail', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+            alert('Заявка отправлена! Мы скоро свяжемся.');
+            form.reset();
+        } else {
+            alert('Ошибка: ' + result.error);
+        }
+    } catch (err) {
+        alert('Ошибка при отправке: ' + err.message);
+    }
+});
+</script>
+ <!-- <script>
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = {
+        to: 'chikchicly@gmail.com', // твой email
+        subject: `Заявка с VSIZE от ${form.name.value}`,
+        text: `Имя: ${form.name.value}\nТелефон: ${form.phone.value}\nСообщение: ${form.message.value}`
+    };
+
+    try {
+        const res = await fetch('/api/send-mail', { // тут правильный путь
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+            alert('Заявка отправлена! Мы скоро свяжемся.');
+            form.reset();
+        } else {
+            alert('Ошибка: ' + result.error);
+        }
+    } catch (err) {
+        alert('Ошибка при отправке: ' + err.message);
+    }
+});
+</script> -->
 </html>

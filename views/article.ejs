@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= article.title %></title>
+  <meta name="description" content="<%- article.description %>">
+  <link rel="shortcut icon" href="../ico.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/header.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+  }
+    body {
+      display: flex;
+      flex-direction: column; /* колонки сверху вниз */
+    }
+    strong{
+      line-height: 87px;
+      height:87px;
+      font-size:33px;
+      z-index: 33;
+    }
+    main{
+      margin-top:87px;
+      flex:1;
+    }
+    footer{
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>VSIZE</strong>
+    <%- include('nav') %>
+  </header>
+    <main>
+      <h1><%= article.title %></h1>
+
+      <div><%- article.text %></div>
+      <p>Автор: <%= article.author %></p>
+      <p>URL: <%= article.url %></p>
+      
+    </main>
+    <%- include('footer') %>
+</body>
+<script defer src="../js/main.js"></script>
+</html>
