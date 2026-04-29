@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>articles</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="../css/article.css">
+    <link rel="shortcut icon" href="../ico.png" type="image/x-icon">
+    <link rel="canonical" href="https://vsize.ru/articles" />
+</head>
+<body>
+    <header>
+        <h1>Статьи</h1>
+        <%- include('nav') %>
+    </header>
+
+    <main>
+        <% articles.forEach(article => { %>
+        <a href="/article/<%= article.url %>" class="mainLink">
+            <div class="box">
+                <h2>
+                
+                    <%= article.title %>
+                </h2>
+                <p><%= article.description %></p>
+            </div>
+        </a>
+        <% }) %>
+    </main>
+    <%- include('footer') %>
+</body>
+</html>

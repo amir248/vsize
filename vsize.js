@@ -38,6 +38,19 @@ app.get('/article/:url', async (req, res) => {
     res.status(500).send('Ошибка при подключении к базе данных');
   }
 });
+app.get('/articles', async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT title, description, url FROM articles ORDER BY id DESC'
+    );
+
+    res.render('articles', { articles: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Ошибка базы данных');
+  }
+});
+
 app.get('/search', (req, res) => {
     res.render('search');
 });
@@ -53,6 +66,9 @@ app.get('/prices', (req, res) => {
 });
 app.get('/map', (req, res) => {
     res.render('map');
+});
+app.get('/articles', (req, res) =>{
+  res.render('articles');
 });
 // app.get('/', (req, res) => {
 //     res.send('Vsize Express Server работает 🚀');

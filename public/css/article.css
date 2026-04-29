@@ -1,0 +1,52 @@
+html, body {
+      height: 100%;
+      margin: 0;
+  }
+    body {
+      display: flex;
+      flex-direction: column; /* колонки сверху вниз */
+    }
+    strong{
+      line-height: 87px;
+      height:87px;
+      font-size:33px;
+      z-index: 33;
+    }
+    main{
+      margin-top:87px;
+      flex:1;
+      width:100%;
+      max-width: 1100px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    footer{
+      background: var(--dark);
+      color: white;
+      padding: 40px 80px;
+      text-align: center;
+    }
+    .autor{
+      float:right;
+      margin-right:17px;
+    }
+    .box{
+      /* border: 1px solid black; */
+      border-radius: 17px;
+      margin-top:7px;
+      background: #7777770c;
+    }
+    .box:hover{
+      background:#dfdfdf70
+    }
+    .box > h2{
+      padding:7px;
+    }
+    .box > p{
+      padding:7px;
+    }
+    .mainLink{
+      text-decoration: none;
+      /* color:var(--accent); */
+      color:var(--dark);
+    }

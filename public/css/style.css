@@ -168,3 +168,10 @@ footer {
     grid-template-columns: 1fr; /* все в один столбец */
   }
 }
+
+.contact-item{
+    display:grid;
+    grid-template-columns: 77px 150px; /* первая 70, вторая 150 */
+  gap: 10px; 
+    align-items: center
+}
