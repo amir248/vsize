@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Playfair_Display'; /* Имя шрифта для использования */
+  src: url('/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('truetype'), /* Путь к файлу */
+       url('/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('truetype'); /* Альтернативный формат */
+  font-weight: normal; /* Начертание: normal, bold, 300, 400 и т.д. */
+  font-style: normal;  /* Стиль: normal, italic */
+  font-display: swap;  /* Оптимизация загрузки */
+}
+@font-face {
+  font-family: 'Bodoni_Moda'; /* Имя шрифта для использования */
+  src: url('/fonts/Bodoni_Moda/BodoniModa-Italic-VariableFont_opsz,wght.ttf') format('truetype'), /* Путь к файлу */
+       url('/fonts/Bodoni_Moda/BodoniModa-VariableFont_opsz,wght.ttf') format('truetype'); /* Альтернативный формат */
+  font-weight: normal; /* Начертание: normal, bold, 300, 400 и т.д. */
+  font-style: normal;  /* Стиль: normal, italic */
+  font-display: swap;  /* Оптимизация загрузки */
+}
+@font-face {
+  font-family: 'PT_Serif';
+  src: url('/fonts/PT_Serif/PTSerif-Regular.ttf') format('truetype');
+  font-weight: 400; /* нормальный вес */
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #ffffff;
   --soft: #f7f7f7;
@@ -8,6 +32,8 @@
 }
 /* #HEADER */
 header {
+    font-family: 'PT_Serif';
+    /* font-family: 'Bodoni_Moda'; */
     position: fixed;
     width: 100%;
     top: 0;
@@ -25,6 +51,7 @@ header {
 header h1 {
   /* font-size: 18px; */
   letter-spacing: 2px;
+  z-index:33;
 }
 
 header nav ul {
