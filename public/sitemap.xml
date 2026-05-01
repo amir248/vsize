@@ -33,17 +33,22 @@
   </url>
     <url>
     <loc>https://vsize.ru/article/office-furniture</loc>
-    <changefreq>never</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://vsize.ru/article/home-furniture</loc>
-    <changefreq>never</changefreq>
+    <changefreq>weeklyr</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://vsize.ru/article/cafe-furniture</loc>
-    <changefreq>never</changefreq>
+    <changefreq>nweekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://vsize.ru/custom-made-kitchens</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

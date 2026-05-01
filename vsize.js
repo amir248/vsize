@@ -76,7 +76,13 @@ app.get('/articles', (req, res) =>{
 app.get('/custom-cabinet-furniture', (req, res)=>{
     res.render('postOne',{});
 });
-
+app.get('/thank-you', (req, res) => {
+    res.set('X-Robots-Tag', 'noindex, nofollow');
+    res.render('thank-you');
+});
+app.get('/custom-made-kitchens',(req, res)=>{
+  res.render('custom-made-kitchens');
+});
 // 404 middleware — ставим после всех маршрутов
 app.use((req, res, next) => {
   res.status(404).render('404',{}); // ставим HTTP статус 404

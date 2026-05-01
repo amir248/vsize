@@ -26,6 +26,7 @@ router.post('/send-mail', async (req, res) => {
         await transporter.sendMail(mailOptions);
 
         res.json({ success: true, message: 'Письмо отправлено' });
+        // res.redirect('/thank-you');
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Ошибка при отправке письма' });

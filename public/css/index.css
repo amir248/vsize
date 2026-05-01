@@ -163,4 +163,7 @@ footer {
         url('/img/fon-mobile.jpeg') type('image/jpeg') 1x
     );
   }
+  .hero-overlay {
+    padding: 30px;
+  }
 }
