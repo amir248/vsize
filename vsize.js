@@ -83,6 +83,12 @@ app.get('/thank-you', (req, res) => {
 app.get('/custom-made-kitchens',(req, res)=>{
   res.render('custom-made-kitchens');
 });
+app.get('/gallery',(req, res)=>{
+  res.render('gallery');
+});
+app.get('/gallery2',(req, res)=>{
+  res.render('gallery2');
+});
 // 404 middleware — ставим после всех маршрутов
 app.use((req, res, next) => {
   res.status(404).render('404',{}); // ставим HTTP статус 404

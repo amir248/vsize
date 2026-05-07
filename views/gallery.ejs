@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="shortcut icon" href="../ico.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/article.css">
+    <link rel="stylesheet" href="css/lightbox3.css">
+    <script type="module" src="js/lightbox3.esm.js"></script>
+</head>
+<body>
+  
+
+<body>
+<header>
+    <strong>VSIZE</strong>
+    <%- include('nav') %>
+</header>
+<main>
+    <section id="gallery-section">
+        <h2>Галерея мебели</h2>
+        <div id="gallery"></div>
+    </section>
+</main>
+<%- include('footer') %>
+<script>
+const gallery = document.getElementById('gallery');
+
+// Список всех фото (имена файлов из папки img/)
+const images = [
+ 
+  "kitchen006.webp",
+  "kitchen045.jpg",
+  "Wardrobe003-500.webp",
+  "bed001-300.webp",
+  "kitchen007-300.webp",
+  "kitchen046.jpg",
+  "Wardrobe003.JPG",
+  "bed001.jpg",
+  "kitchen007.jpg",
+  "kitchen047.jpg",
+  "Wardrobe004.JPG",
+  "bed001.webp",
+  "kitchen007.webp",
+  "kitchen048.jpg",
+  "Wardrobe005.JPG",
+  "bed002.jpg",
+  "kitchen008-300.webp",
+  "kitchen049.jpg",
+  "Wardrobe006.jpg",
+  "bed003-300.webp",
+  "kitchen008.jpg",
+  "kitchen050.jpg",
+  "Wardrobe007.jpg",
+  "bed003.jpg",
+  "kitchen008.webp",
+  "kitchen051.jpg",
+  "Wardrobe008.jpg",
+  "bed003.webp",
+  "kitchen009-300.webp",
+  "kitchen052.jpg",
+  "Wardrobe009.jpg",
+  "bed004.jpg",
+  "kitchen009.jpg",
+  "kitchen053.jpg",
+  "Wardrobe010.jpg",
+  "bed005-300.webp",
+  "kitchen009.webp",
+  "kitchen054.jpg",
+  "Wardrobe011.jpg",
+  "bed005.jpg",
+  "kitchen010-300.webp",
+  "kitchen055.jpg",
+  "Wardrobe012.jpg",
+  "bed005.webp",
+  "kitchen010.jpg",
+  "kitchen056.jpg",
+  "Wardrobe013-300.webp",
+  "bed006-300.webp",
+  "kitchen010.webp",
+  "kitchen057.jpg",
+  "Wardrobe013.jpg",
+  "bed006.jpg",
+  "kitchen011-300.webp",
+  "kitchen058.jpg",
+  "Wardrobe013.webp",
+  "bed006.webp",
+  "kitchen011.jpg",
+  "kitchen059.jpg",
+  "Wardrobe014.jpg",
+  "bed-1.avif",
+  "kitchen011.webp",
+  "kitchen060.jpg",
+  "Wardrobe015.jpg",
+  "IMG_1175.JPG",
+  "kitchen012.jpg",
+  "kitchen061.jpg",
+  "Wardrobe016.jpg",
+  "IMG_1176.JPG",
+  "kitchen013.jpg",
+  "kitchen062.jpg",
+  "Wardrobe017.jpg",
+  "IMG_1177.JPG",
+  "kitchen013.webp",
+  "kitchen063.jpg",
+  "Wardrobe018.jpg",
+  "IMG_1178.JPG",
+  "kitchen014.jpg",
+  "kitchen064.jpg",
+  "Wardrobe019-300.webp",
+  "IMG_1598.JPG",
+  "kitchen015.jpg",
+  "kitchen065.jpg",
+  "Wardrobe019.jpg",
+  "IMG_1599.JPG",
+  "kitchen015.webp",
+  "kitchen066.jpg",
+  "Wardrobe019.webp",
+  "IMG_1600.JPG",
+  "kitchen016.jpg",
+  "kitchen067.jpg",
+  "Wardrobe020.jpg",
+  "IMG_1604.JPG",
+  "kitchen017.jpg",
+  "kitchen068.jpg",
+  "Wardrobe021.jpg",
+  "IMG_2855.JPG",
+  "kitchen018.jpg",
+  "kitchen069.jpg",
+  "Wardrobe022.jpg",
+  "IMG_2984.JPG",
+  "kitchen018.webp",
+  "kitchen070.jpg",
+  "Wardrobe023.jpg",
+  "IMG_3022.JPG",
+  "kitchen019.jpg",
+  "kitchen071.jpg",
+  "Wardrobe024-300.webp",
+  "IMG_3047.JPG",
+  "kitchen020.jpg",
+  "kitchenother001.png",
+  "Wardrobe024.jpg",
+  "IMG_3048.JPG",
+  "kitchen021.jpg",
+  "kitchenother002.png",
+  "Wardrobe024.webp",
+  "IMG_3447.JPG",
+  "kitchen021.webp",
+  "kitchenother002.webp",
+  "Wardrobe025-300.webp",
+  "IMG_3448.JPG",
+  "kitchen022-300.webp",
+  "livingRoom001-300.webp",
+  "Wardrobe025.jpg",
+  "IMG_3758.JPG",
+  "kitchen022.jpg",
+  "livingRoom001.jpg",
+  "Wardrobe025.webp",
+  "IMG_3759.JPG",
+  "kitchen022.webp",
+  "livingRoom001.webp",
+  "Wardrobe027-300.webp",
+  "IMG_3760.JPG",
+  "kitchen023-300.webp",
+  "livingRoom002-300.webp",
+  "Wardrobe027.jpg",
+  "IMG_4292-300.webp",
+  "kitchen023.jpg",
+  "livingRoom002.jpg",
+  "Wardrobe027.webp",
+  "IMG_4292.JPG",
+  "kitchen023.webp",
+  "livingRoom002.webp",
+  "Wardrobe028-300.webp",
+  "IMG_4292.webp",
+  "kitchen024-300.webp",
+  "livingRoom003-300.webp",
+  "Wardrobe028.jpg",
+  "IMG_4293-300.webp",
+  "kitchen024.jpg",
+  "livingRoom003-700.webp",
+  "Wardrobe028.webp",
+  "IMG_4293.JPG",
+  "kitchen024.webp",
+  "livingRoom003.jpg",
+  "Wardrobe029-300.webp",
+  "IMG_4293.webp",
+  "kitchen025.png",
+  "livingRoom003.webp",
+  "Wardrobe029.jpg",
+  "IMG_4294-300.webp",
+  "kitchen025.webp",
+  "livingRoom004-300.webp",
+  "Wardrobe029.webp",
+  "IMG_4294.JPG",
+  "kitchen026.png",
+  "livingRoom004.jpg",
+  "Wardrobe030.jpg",
+  "IMG_4294.webp",
+  "kitchen026.webp",
+  "livingRoom004.webp",
+  "Wardrobe030.webp",
+  "IMG_4295-300.webp",
+  "kitchen027.png",
+  "livingRoom005-300.webp",
+  "Wardrobe031.jpg",
+  "IMG_4295.JPG",
+  "kitchen028.png",
+  "livingRoom005.jpg",
+  "Wardrobe031.webp",
+  "IMG_4295.webp",
+  "kitchen028.webp",
+  "livingRoom005.webp",
+  "Wardrobe032.jpg",
+  "IMG_4296-300.webp",
+  "kitchen029.png",
+  "livingRoom006-300.webp",
+  "Wardrobe033-300.webp",
+  "IMG_4296.JPG",
+  "kitchen030.png",
+  "livingRoom006-353.webp",
+  "Wardrobe033.jpg",
+  "IMG_4296.webp",
+  "kitchen031.png",
+  "livingRoom006.jpg",
+  "Wardrobe033.webp",
+  "kitchen001-300.webp",
+  "kitchen031.webp",
+  "livingRoom006.webp",
+  "Wardrobe034-300.webp",
+  "kitchen001.jpg",
+  "kitchen032.png",
+  "livingRoom007-300.webp",
+  "Wardrobe034.jpg",
+  "kitchen001.webp",
+  "kitchen033.png",
+  "livingRoom007.jpg",
+  "Wardrobe034.webp",
+  "kitchen002-300.webp",
+  "kitchen034.png",
+  "livingRoom007.webp",
+  "Wardrobe035-300.webp",
+  "kitchen002.jpg",
+  "kitchen035.jpg",
+  "store001.JPG",
+  "Wardrobe035.jpg",
+  "kitchen002.webp",
+  "kitchen035.webp",
+  "store002.JPG",
+  "Wardrobe035.webp",
+  "kitchen003-300.webp",
+  "kitchen036.jpg",
+  "store003-700.webp",
+  "Wardrobe037.jpg",
+  "kitchen003.jpg",
+  "kitchen037.jpg",
+  "store003.JPG",
+  "Wardrobe037.webp",
+  "kitchen003.webp",
+  "kitchen038.jpg",
+  "store003.webp",
+  "Wardrobe038.jpg",
+  "kitchen004-300.webp",
+  "kitchen038.webp",
+  "store004.JPG",
+  "Wardrobe039.jpg",
+  "kitchen004.jpg",
+  "kitchen039.jpg",
+  "tvStand.jpg",
+  "Wardrobe040.jpg",
+  "kitchen004.webp",
+  "kitchen040.jpg",
+  "TV--stand.jpg",
+  "Wardrobe040.webp",
+  "kitchen005-300.webp",
+  "kitchen040.webp",
+  "tvStand.webp",
+  "Wardrobre026-300.webp",
+  "kitchen005.jpg",
+  "kitchen041.jpg",
+  "Wardrobe001-351.webp",
+  "Wardrobre026.jpg",
+  "kitchen005.webp",
+  "kitchen042.jpg",
+  "Wardrobe001.JPG",
+  "Wardrobre026.webp",
+  "kitchen006-300.webp",
+  "kitchen043.jpg",
+  "Wardrobe001.webp",
+  "kitchen006.jpg",
+  "kitchen044.jpg",
+  "Wardrobe002.JPG"
+];
+
+images.forEach(file => {
+  if(file.includes('.')) {
+    const a = document.createElement('a');
+    // Lightbox открывает fallback
+    const fallback = file.match(/\.(jpg|jpeg|png)$/i) ? file : file.replace(/\.[^/.]+$/, '.jpg');
+    a.href = `imgs/${fallback}`;
+    a.setAttribute('data-lightbox', 'gallery');
+
+    const picture = document.createElement('picture');
+
+    // AVIF
+    if(file.endsWith('.avif')) {
+      const sourceAvif = document.createElement('source');
+      sourceAvif.type = 'image/avif';
+      sourceAvif.srcset = `imgs/${file}`;
+      picture.appendChild(sourceAvif);
+    }
+
+    // WebP
+    if(file.endsWith('.webp')) {
+      const sourceWebp = document.createElement('source');
+      sourceWebp.type = 'image/webp';
+      sourceWebp.srcset = `imgs/${file}`;
+      picture.appendChild(sourceWebp);
+    }
+
+    // Fallback
+    const img = document.createElement('img');
+    // если это AVIF/WebP, ищем jpg с тем же именем
+    img.src = `imgs/${fallback}`;
+    img.alt = file;
+    img.style.width = '150px';
+    img.style.height = '100px';
+    img.style.objectFit = 'cover';
+    img.style.margin = '5px';
+
+    picture.appendChild(img);
+    a.appendChild(picture);
+    gallery.appendChild(a);
+  }
+});
+</script>
+</body>
+<script defer src="js/main.js"></script>
+</html>

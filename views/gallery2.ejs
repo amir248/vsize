@@ -1,0 +1,57 @@
+<section id="gallery-section">
+  <h2>Галерея мебели</h2>
+  <div id="gallery"></div>
+</section>
+
+<script>
+const gallery = document.getElementById('gallery');
+
+// Пример структуры файлов, сгенерированных заранее
+const allImages = [
+  { folder: 'Bed/Bed-1', base: 'bed-1', formats: ['avif', 'webp', 'jpg'] },
+  { folder: 'livingRoom', base: 'tvStand', formats: ['webp', 'jpg'] },
+  { folder: 'Wardrobe', base: 'WardrobeEx001', formats: ['jpg', 'jpeg'] },
+  { folder: 'hallways', base: 'IMG_4292', formats: ['webp', 'JPG'] },
+  { folder: 'kitchen', base: 'kitchenDesign-1', formats: ['png', 'webp'] },
+  { folder: 'retailStoreEquipment', base: 'store003', formats: ['webp', 'JPG'] }
+];
+
+allImages.forEach(({ folder, base, formats }) => {
+  const picture = document.createElement('picture');
+
+  // Сначала AVIF
+  if(formats.includes('avif')) {
+    const sourceAvif = document.createElement('source');
+    sourceAvif.type = 'image/avif';
+    sourceAvif.srcset = `img/${folder}/${base}.avif`;
+    picture.appendChild(sourceAvif);
+  }
+
+  // Потом WebP
+  if(formats.includes('webp')) {
+    const sourceWebp = document.createElement('source');
+    sourceWebp.type = 'image/webp';
+    sourceWebp.srcset = `img/${folder}/${base}.webp`;
+    picture.appendChild(sourceWebp);
+  }
+
+  // Fallback — JPEG/PNG
+  const fallbackFormat = formats.find(f => ['jpg','jpeg','png'].includes(f));
+  const img = document.createElement('img');
+  img.src = `img/${folder}/${base}.${fallbackFormat}`;
+  img.alt = base;
+  img.style.width = '150px';
+  img.style.height = '100px';
+  img.style.objectFit = 'cover';
+  img.style.margin = '5px';
+  picture.appendChild(img);
+
+  // Lightbox
+  const a = document.createElement('a');
+  a.href = img.src; // Lightbox открывает fallback
+  a.setAttribute('data-lightbox', 'gallery');
+  a.appendChild(picture);
+
+  gallery.appendChild(a);
+});
+</script>
