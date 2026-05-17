@@ -14,7 +14,7 @@ app.use(express.static('public'));
 // говорим что используем EJS
 app.set('view engine', 'ejs');
 
-// папка с шаблонами
+// папка с шаблонами !!! views
 app.set('views', './views');
 
 
