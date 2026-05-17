@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> | vsize.ru</title>
+    <meta name="description" content="<%= pageDescription %>">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; }
+        header, section, footer { padding: 40px 20px; max-width: 1200px; margin:auto; }
+        h1,h2,h3 { color: #333; }
+        .cta-button { display:inline-block; padding:15px 30px; background:#FF6F00; color:#fff; text-decoration:none; border-radius:5px; }
+        .features, .materials, .steps, .faq, .reviews { display: flex; flex-wrap: wrap; gap:20px; }
+        .feature, .material, .step, .faq-item, .review { flex:1 1 300px; border:1px solid #ddd; padding:20px; border-radius:5px; background:#f9f9f9; }
+        .gallery { display:flex; flex-wrap: wrap; gap:10px; }
+        .gallery img { width: calc(33.33% - 10px); border-radius:5px; }
+        form { display:flex; flex-direction: column; gap:15px; max-width: 500px; }
+        input, textarea, select, button { padding:10px; font-size:16px; width:100%; }
+        footer { background:#333; color:#fff; text-align:center; }
+        footer a { color:#FF6F00; text-decoration:none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><%= pageTitle %></h1>
+    <p><%= pageSubtitle %></p>
+    <a href="#order-form" class="cta-button">Заказать расчет стоимости</a>
+</header>
+
+<section class="features">
+    <h2>Почему выбирают нас</h2>
+    <% features.forEach(function(feature){ %>
+        <div class="feature"><%= feature %></div>
+    <% }); %>
+</section>
+
+<section class="gallery">
+    <h2>Наши проекты кухонь на заказ</h2>
+    <% gallery.forEach(function(item){ %>
+        <img src="<%= item.img %>" alt="<%= item.alt %>">
+    <% }); %>
+</section>
+
+<section class="materials">
+    <h2>Материалы и стили под ваш вкус</h2>
+    <% materials.forEach(function(material){ %>
+        <div class="material"><strong><%= material.title %>:</strong> <%= material.desc %></div>
+    <% }); %>
+</section>
+
+<section class="steps">
+    <h2>Как мы создаем вашу кухню</h2>
+    <% steps.forEach(function(step){ %>
+        <div class="step"><strong><%= step.number %>. <%= step.title %></strong> — <%= step.desc %></div>
+    <% }); %>
+</section>
+
+<section id="order-form">
+    <h2>Рассчитайте стоимость кухни</h2>
+    <form action="/send-order" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон / WhatsApp" required>
+        <input type="text" name="address" placeholder="Адрес" required>
+        <input type="number" name="area" placeholder="Площадь кухни (кв.м)" required>
+        <textarea name="details" placeholder="Дополнительно (фасады, техника)" rows="3"></textarea>
+        <button type="submit" class="cta-button">Получить расчет</button>
+    </form>
+</section>
+
+<section class="reviews">
+    <h2>Отзывы наших клиентов</h2>
+    <% reviews.forEach(function(review){ %>
+        <div class="review">
+            <strong><%= review.name %>, <%= review.city %>:</strong> <%= review.text %>
+        </div>
+    <% }); %>
+</section>
+
+<section class="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <% faq.forEach(function(item){ %>
+        <div class="faq-item">
+            <strong><%= item.question %></strong>
+            <p><%= item.answer %></p>
+        </div>
+    <% }); %>
+</section>
+
+<footer>
+    <p>Контакты: <a href="tel:<%= contact.phone %>"><%= contact.phone %></a> | <a href="mailto:<%= contact.email %>"><%= contact.email %></a></p>
+    <p>Адрес: <%= contact.address %></p>
+    <p>&copy; 2027 vsize.ru. Все права защищены. <a href="/privacy">Политика конфиденциальности</a></p>
+</footer>
+
+</body>
+</html>
