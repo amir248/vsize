@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> | vsize.ru</title>
+    <meta name="description" content="<%= pageDescription %>">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/customPage.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Шкафы на заказ в Москве",
+  "description": "Индивидуальные шкафы на заказ: шкафы-купе, встроенные и отдельно стоящие. Доставка и сборка под ключ.",
+  "provider": {
+    "@type": "Organization",
+    "name": "vsize.ru",
+    "url": "https://vsize.ru",
+    "logo": "https://vsize.ru/ico.png",
+    "telephone": "+7 913 787 04 04 ",
+    "email": "info@vsize.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Примерная, д. 1",
+      "addressLocality": "Москва",
+      "postalCode": "101000",
+      "addressCountry": "RU"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Москва"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Каталог шкафов на заказ",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Шкаф-купе",
+          "image": "https://vsize.ru/images/wardrobe1.jpg",
+          "description": "Современный шкаф-купе на заказ",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://vsize.ru/shkafy-na-zakaz-moskva",
+            "priceCurrency": "RUB",
+            "price": "15000",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2026-12-31"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Встроенный шкаф",
+          "image": "https://vsize.ru/images/wardrobe2.jpg",
+          "description": "Встроенный шкаф для прихожей",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://vsize.ru/shkafy-na-zakaz-moskva",
+            "priceCurrency": "RUB",
+            "price": "20000",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2026-12-31"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Отдельностоящий шкаф",
+          "image": "https://vsize.ru/images/wardrobe3.jpg",
+          "description": "Отдельностоящий шкаф под заказ",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://vsize.ru/shkafy-na-zakaz-moskva",
+            "priceCurrency": "RUB",
+            "price": "18000",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2026-12-31"
+          }
+        }
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://vsize.ru/api/send-mail",
+      "inLanguage": "ru-RU",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/AndroidPlatform",
+        "http://schema.org/iOSPlatform"
+      ]
+    },
+    "result": {
+      "@type": "Order",
+      "name": "Заказ шкафа на сайте"
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<header>
+    <h1><%= pageTitle %></h1>
+    <%- include('nav') %>
+</header>
+<section class="steps">
+    <p><%= pageSubtitle %></p>
+    <a href="#order-form" class="cta-button">Заказать расчет стоимости</a>
+</section>
+<section class="features">
+    <h2>Почему выбирают нас</h2>
+    <hr style="width:100%;">
+    <% features.forEach(function(feature){ %>
+        <div class="feature"><%= feature %></div>
+    <% }); %>
+</section>
+
+<section class="gallery">
+    <h2>Наши проекты шкафов на заказ</h2>
+    <hr style="width:100%;">
+    <% gallery.forEach(function(item){ %>
+        <img src="<%= item.img %>" alt="<%= item.alt %>">
+    <% }); %>
+</section>
+
+<section class="materials">
+    <h2>Материалы и стили</h2>
+    <hr style="width:100%;">
+    <% materials.forEach(function(material){ %>
+        <div class="material"><strong><%= material.title %>:</strong> <%= material.desc %></div>
+    <% }); %>
+</section>
+
+<section class="steps">
+    <h2>Как мы создаем ваш шкаф</h2>
+    <hr style="width:100%;">
+    <% steps.forEach(function(step){ %>
+        <div class="step"><strong><%= step.number %>. <%= step.title %></strong> — <%= step.desc %></div>
+    <% }); %>
+</section>
+
+<section id="order-form">
+    <h2>Рассчитайте стоимость шкафа</h2>
+    <form action="/send-mail" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон / WhatsApp" required>
+        <input type="text" name="address" placeholder="Адрес" required>
+        <input type="text" name="size" placeholder="Размеры шкафа (ширина x высота x глубина)" required>
+        <textarea name="details" placeholder="Дополнительно (фасады, внутреннее наполнение)" rows="3"></textarea>
+        <button type="submit" class="cta-button">Получить расчет</button>
+    </form>
+</section>
+
+<!-- <section class="reviews">
+    <h2>Отзывы наших клиентов</h2>
+    <hr style="width:100%;">
+    <% reviews.forEach(function(review){ %>
+        <div class="review">
+            <strong><%= review.name %>, <%= review.city %>:</strong> <%= review.text %>
+        </div>
+    <% }); %>
+</section> -->
+
+<section class="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <hr style="width:100%;">
+    <% faq.forEach(function(item){ %>
+        <div class="faq-item">
+            <strong><%= item.question %></strong>
+            <p><%= item.answer %></p>
+        </div>
+    <% }); %>
+</section>
+<%- include('footer') %>
+<!-- 
+<footer>
+    <p>Контакты: <a href="tel:<%= contact.phone %>"><%= contact.phone %></a> | <a href="mailto:<%= contact.email %>"><%= contact.email %></a></p>
+    <p>Адрес: <%= contact.address %></p>
+    <p>&copy; 2026 vsize.ru. Все права защищены. <a href="/privacy">Политика конфиденциальности</a></p>
+</footer> -->
+
+</body>
+<script defer="" src="js/main.js"></script>
+
+</html>

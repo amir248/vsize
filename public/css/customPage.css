@@ -1,0 +1,12 @@
+body { font-family: PT_Serif; margin:0; padding:0; line-height:1.6; margin-top:170px;}
+        section, footer { padding: 40px 20px; max-width: 1200px; margin:auto; }
+        h1,h2,h3 { color: #333; }
+        .cta-button { display:inline-block; padding:15px 30px; background:#FF6F00; color:#fff; text-decoration:none; border-radius:5px; }
+        .features, .materials, .steps, .faq, .reviews { display: flex; flex-wrap: wrap; gap:20px; }
+        .feature, .material, .step, .faq-item, .review { flex:1 1 300px; border:1px solid #ddd; padding:20px; border-radius:5px; background:#f9f9f9; }
+        .gallery { display:flex; flex-wrap: wrap; gap:10px; }
+        .gallery img { width: calc(33.33% - 10px); border-radius:5px; }
+        form { display:flex; flex-direction: column; gap:15px; max-width: 500px; }
+        input, textarea, select { padding:10px; font-size:16px; width:100%; }
+        footer { background:#333; color:#fff; text-align:center; }
+        footer a { color:#FF6F00; text-decoration:none; }

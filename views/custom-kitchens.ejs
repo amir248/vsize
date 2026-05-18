@@ -6,11 +6,12 @@
     <title>Кухни на заказ в Москве — Индивидуальный дизайн и сборка | vsize.ru</title>
     <meta name="description" content="Закажите кухню на заказ в Москве по индивидуальному проекту. Широкий выбор материалов, встроенная техника, доставка и сборка под ключ.">
     <link rel="shortcut icon" href="ico.png" type="image/x-icon">
-
-    <!-- <link rel="stylesheet" href="/styles.css"> Подключение вашего CSS -->
+    
+    <link rel="stylesheet" href="/css/header.css">
     <style>
-        body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; }
-        header, section, footer { padding: 40px 20px; max-width: 1200px; margin: auto; }
+        body { font-family: PT_Serif; margin:0; padding:0; line-height:1.6; margin-top:70px;}
+        /* header,  */
+        section, footer { padding: 40px 20px; max-width: 1200px; margin: auto; }
         h1,h2,h3 { color: #333; }
         .cta-button { display:inline-block; padding:15px 30px; background:#FF6F00; color:#fff; text-decoration:none; border-radius:5px; }
         .features, .materials, .steps, .faq, .reviews { display: flex; flex-wrap: wrap; gap:20px; }
@@ -18,21 +19,127 @@
         .gallery { display:flex; flex-wrap: wrap; gap:10px; }
         .gallery img { width: calc(33.33% - 10px); border-radius:5px; }
         form { display:flex; flex-direction: column; gap:15px; max-width: 500px; }
-        input, textarea, select, button { padding:10px; font-size:16px; width:100%; }
+        input, textarea, select { padding:10px; font-size:16px; width:calc(100% - 20px); }
         footer { background:#333; color:#fff; text-align:center; }
         footer a { color:#FF6F00; text-decoration:none; }
     </style>
+   <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Кухни на заказ в Москве",
+    "description": "Индивидуальные кухни на заказ: классические, современные и модульные решения. Доставка и сборка под ключ.",
+    "provider": {
+        "@type": "Organization",
+        "name": "vsize.ru",
+        "url": "https://vsize.ru",
+        "logo": "https://vsize.ru/ico.png",
+        "telephone": "+7 913 787 04 04",
+        "email": "info@vsize.ru",
+        "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Примерная, д. 1",
+        "addressLocality": "Москва",
+        "postalCode": "101000",
+        "addressCountry": "RU"
+        }
+    },
+    "areaServed": {
+        "@type": "City",
+        "name": "Москва"
+    },
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Каталог кухонь на заказ",
+        "itemListElement": [
+        {
+            "@type": "Offer",
+            "itemOffered": {
+            "@type": "Product",
+            "name": "Классическая кухня",
+            "image": "https://vsize.ru/images/kitchen1.jpg",
+            "description": "Классическая кухня на заказ с фасадами из МДФ",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://vsize.ru/kukhni-na-zakaz-moskva",
+                "priceCurrency": "RUB",
+                "price": "25000",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31"
+            }
+            }
+        },
+        {
+            "@type": "Offer",
+            "itemOffered": {
+            "@type": "Product",
+            "name": "Современная кухня",
+            "image": "https://vsize.ru/images/kitchen2.jpg",
+            "description": "Современная кухня с модульными фасадами и встроенной техникой",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://vsize.ru/kukhni-na-zakaz-moskva",
+                "priceCurrency": "RUB",
+                "price": "35000",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31"
+            }
+            }
+        },
+        {
+            "@type": "Offer",
+            "itemOffered": {
+            "@type": "Product",
+            "name": "Модульная кухня",
+            "image": "https://vsize.ru/images/kitchen3.jpg",
+            "description": "Модульная кухня на заказ с возможностью комбинирования блоков",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://vsize.ru/kukhni-na-zakaz-moskva",
+                "priceCurrency": "RUB",
+                "price": "30000",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31"
+            }
+            }
+        }
+        ]
+    },
+    "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://vsize.ru/api/send-mail",
+        "inLanguage": "ru-RU",
+        "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/AndroidPlatform",
+            "http://schema.org/iOSPlatform"
+        ]
+        },
+        "result": {
+        "@type": "Order",
+        "name": "Заказ кухни на сайте"
+        }
+    }
+    }
+    </script>
 </head>
 <body>
 
 <header>
-    <h1>Кухни на заказ в Москве — Создайте свою идеальную кухню</h1>
+    <h1>Кухни на заказ в Москве</h1>
+     <!-- — Создайте свою идеальную кухню -->
+    
+    <%- include('nav') %>
+</header>
+<section class="faq">
     <p>Индивидуальные решения, современный дизайн и удобная сборка под ключ</p>
     <a href="#order-form" class="cta-button">Заказать расчет стоимости</a>
-</header>
-
+</section>
 <section class="features">
     <h2>Почему выбирают нас</h2>
+    <hr style="width:100%;">
     <div class="feature">Более 500 реализованных проектов</div>
     <div class="feature">Работаем с МДФ, ЛДСП, массивом дерева</div>
     <div class="feature">3D-дизайн проекта бесплатно</div>
@@ -54,6 +161,7 @@
 
 <section class="materials">
     <h2>Материалы и стили под ваш вкус</h2>
+    <hr style="width:100%;">
     <div class="material"><strong>МДФ:</strong> экономно и красиво</div>
     <div class="material"><strong>ЛДСП:</strong> долговечно и практично</div>
     <div class="material"><strong>Массив дерева:</strong> премиум качество</div>
@@ -62,6 +170,7 @@
 
 <section class="steps">
     <h2>Как мы создаем вашу кухню</h2>
+    <hr style="width:100%;">
     <div class="step"><strong>1. Замер и консультация</strong> — бесплатно приезжаем на объект</div>
     <div class="step"><strong>2. Дизайн-проект в 3D</strong> — визуализация вашей кухни</div>
     <div class="step"><strong>3. Производство и согласование</strong> — индивидуальный подход</div>
@@ -93,6 +202,7 @@
 
 <section class="faq">
     <h2>Часто задаваемые вопросы</h2>
+    <hr style="width:100%;">
     <div class="faq-item">
         <strong>Сколько стоит кухня на заказ?</strong>
         <p>Цена зависит от площади, материалов и сложности проекта. Рассчитаем индивидуально.</p>
@@ -116,8 +226,8 @@
     <p>Адрес: Москва, ул. Примерная, д. 1</p>
     <p>&copy; 2026 vsize.ru. Все права защищены. <a href="/privacy">Политика конфиденциальности</a></p>
 </footer> -->
-
 </body>
+<script defer="" src="js/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('#order-form form');
