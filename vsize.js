@@ -235,6 +235,17 @@ app.get('/custom-walkin-closets', (req, res) => {
         }
     });
 });
+
+app.get('/custom-kids-furniture', (req,res)=>{
+    res.render('custom-kids-furniture');
+});
+app.get('/chests-of-drawers-and-bedside-tables',(req,res)=>{
+    res.render('chests-of-drawers-and-bedside-tables');
+});
+app.get('/custom-made-bedrooms', (req,res)=>{
+    res.render('custom-made-bedrooms');
+});
+
 // 404 middleware — ставим после всех маршрутов
 app.use((req, res, next) => {
   res.status(404).render('404',{}); // ставим HTTP статус 404

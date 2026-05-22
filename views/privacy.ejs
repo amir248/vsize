@@ -5,23 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Политика конфиденциальности | vsize.ru</title>
     <link rel="stylesheet" href="/styles.css">
-    <style>
-        body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; color:#333; }
-        header, section, footer { padding: 40px 20px; max-width: 1000px; margin:auto; }
-        h1, h2, h3 { color: #333; margin-bottom: 20px; }
-        p { margin-bottom: 15px; }
-        ul { margin-left: 20px; margin-bottom: 15px; }
-        footer { background:#333; color:#fff; text-align:center; padding:20px; }
-        footer a { color:#FF6F00; text-decoration:none; }
-    </style>
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/customPage.css">
 </head>
 <body>
 
 <header>
-    <h1>Политика конфиденциальности</h1>
-    <p>Дата вступления в силу: 17 мая 2026 года</p>
+    <h1>Политика конфи<wbr>денциальности</h1>
+    <%- include('nav') %>
 </header>
-
+<section>
+    <p>Дата вступления в силу: 17 мая 2026 года</p>
+</section>
 <section>
     <p>vsize.ru (далее — «Сайт») уважает вашу конфиденциальность и обязуется защищать персональные данные пользователей. Настоящая политика описывает, какие данные мы собираем, как используем и защищаем их.</p>
     
@@ -94,4 +90,6 @@
 <%- include('footer') %>
 
 </body>
+<script defer="" src="js/main.js"></script>
+
 </html>

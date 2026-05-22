@@ -158,7 +158,7 @@
         <input type="text" name="name" placeholder="Ваше имя" required>
         <input type="tel" name="phone" placeholder="Телефон / WhatsApp" required>
         <input type="text" name="address" placeholder="Адрес" required>
-        <input type="text" name="size" placeholder="Размеры шкафа (ширина x высота x глубина)" required>
+        <input type="text" name="area" placeholder="Размеры шкафа (ширина x высота x глубина)" required>
         <textarea name="details" placeholder="Дополнительно (фасады, внутреннее наполнение)" rows="3"></textarea>
         <button type="submit" class="cta-button">Получить расчет</button>
     </form>
@@ -194,5 +194,64 @@
 
 </body>
 <script defer="" src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('#order-form form');
 
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // отменяем стандартную отправку
+
+        // собираем данные из формы
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const address = form.address.value.trim();
+        const area = form.area.value.trim();
+        const details = form.details.value.trim();
+
+        // простая валидация
+        if (!name || !phone || !address || !area) {
+            alert('Пожалуйста, заполните все обязательные поля!');
+            return;
+        }
+
+        // формируем текст письма
+        const emailText = `
+Новый заказ:
+
+Имя: ${name}
+Телефон: ${phone}
+Адрес: ${address}
+Площадь : ${area} кв.м
+Дополнительно: ${details}
+        `;
+
+        // данные для отправки через твой роут /send-mail
+        const mailData = {
+            to: 'daliashat@gmail.com', // сюда приходит заказ
+            subject: 'Новый заказ wardrobes с сайта vsize.ru',
+            text: emailText
+        };
+
+        fetch('/api/send-mail', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(mailData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) {
+                alert('Спасибо! Ваш заказ принят. Мы свяжемся с вами.');
+                form.reset(); // очищаем форму
+            } else {
+                alert('Ошибка при отправке. Попробуйте позже.');
+                console.error(data.error);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Ошибка сети. Попробуйте позже.');
+        });
+    });
+});
+</script>
 </html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комоды и тумбы на заказ в Москве | Vsize.ru</title>
+    <meta name="description" content="Комоды и тумбы на заказ: современные и классические модели под любые размеры и интерьер. Доставка и сборка под ключ.">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/customPage.css">
+</head>
+<body>
+
+
+<header class="page-header">
+    <h1>Комоды и тумбы на заказ в Москве</h1>
+    <%- include('nav') %>
+</header>
+<section id="advanteges">
+    <p>Современные и классические модели под любые размеры и интерьер. Доставка и сборка под ключ.</p>
+</section>
+<!-- Преимущества -->
+<section id="advantages">
+    <h2>Почему выбирают нас</h2>
+    <ul>
+        <li>Индивидуальный проект под ваши размеры</li>
+        <li>Высокое качество материалов</li>
+        <li>Быстрая доставка и сборка</li>
+        <li>Современный дизайн и функциональность</li>
+    </ul>
+</section>
+
+<!-- Процесс заказа -->
+<section id="process">
+    <h2>Как мы работаем</h2>
+    <ol>
+        <li>Вы оставляете заявку на сайте</li>
+        <li>Наш дизайнер согласовывает проект и размеры</li>
+        <li>Производство мебели под заказ</li>
+        <li>Доставка и сборка в удобное время</li>
+    </ol>
+</section>
+
+<!-- Галерея мебели -->
+<section id="gallery">
+    <h2>Наши работы</h2>
+    <div class="gallery-grid">
+        <% 
+        const gallery = [
+            { name: "Комод классический", image: "/images/dresser1.jpg", description: "Элегантный классический комод с выдвижными ящиками", price: 18000 },
+            { name: "Тумба под ТВ", image: "/images/dresser2.jpg", description: "Современная тумба для телевизора и техники", price: 15000 },
+            { name: "Комод с отделениями", image: "/images/dresser3.jpg", description: "Комод с секциями для хранения одежды и аксессуаров", price: 22000 }
+        ];
+
+        gallery.forEach(function(item) { %>
+            <div class="gallery-item">
+                <img src="<%= item.image %>" alt="<%= item.name %>">
+                <h3><%= item.name %></h3>
+                <p><%= item.description %></p>
+            </div>
+        <% }) %>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <dl>
+        <dt>Сколько времени занимает изготовление комода или тумбы?</dt>
+        <dd>От 2 до 4 недель в зависимости от модели и размера.</dd>
+
+        <dt>Можно ли выбрать цвет и материал?</dt>
+        <dd>Да, вы можете выбрать любые материалы и цвета по вашему вкусу.</dd>
+
+        <dt>Включена ли сборка?</dt>
+        <dd>Да, доставка и сборка включены в стоимость.</dd>
+
+        <dt>Можно ли заказать по собственному эскизу?</dt>
+        <dd>Да, наши дизайнеры помогут адаптировать ваш проект под реальные размеры.</dd>
+    </dl>
+</section>
+
+<!-- Форма заказа -->
+<section id="order-form">
+    <h2>Рассчитайте стоимость комода или тумбы</h2>
+    <form action="/send-order" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон / WhatsApp" required>
+        <input type="text" name="address" placeholder="Адрес" required>
+        <input type="number" name="area" placeholder="Площадь комнаты (кв.м)" required>
+        <textarea name="details" placeholder="Дополнительно (цвет, материал, размеры)" rows="3"></textarea>
+        <button type="submit" class="cta-button">Получить расчет</button>
+    </form>
+</section>
+
+<!-- Отзывы -->
+<section id="reviews">
+    <h2>Отзывы клиентов</h2>
+    <% 
+    const reviews = [
+        { author: "Алексей", body: "Заказали комод, качество на высоте, монтаж прошел быстро.", rating: 5 },
+        { author: "Екатерина", body: "Тумба получилась очень стильной и вместительной. Ребенок доволен!", rating: 5 },
+        { author: "Ирина", body: "Все сделали точно под размеры комнаты, спасибо!", rating: 5 }
+    ];
+
+    reviews.forEach(function(review) { %>
+        <div class="review">
+            <strong><%= review.author %></strong>
+            <p><%= review.body %></p>
+            <span>Оценка: <%= review.rating %> / 5</span>
+        </div>
+    <% }) %>
+</section>
+
+<%- include('footer') %>
+<script defer="" src="js/main.js"></script>
+<!-- JS для отправки формы -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('#order-form form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            name: form.name.value.trim(),
+            phone: form.phone.value.trim(),
+            address: form.address.value.trim(),
+            area: form.area.value.trim(),
+            details: form.details.value.trim()
+        };
+        if (!formData.name || !formData.phone || !formData.address || !formData.area) {
+            alert('Пожалуйста, заполните все обязательные поля!');
+            return;
+        }
+        fetch(form.action, {
+            method: form.method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                alert('Спасибо! Ваш заказ принят. Мы свяжемся с вами.');
+                form.reset();
+            } else {
+                alert('Ошибка при отправке. Попробуйте позже.');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Ошибка сети. Попробуйте позже.');
+        });
+    });
+});
+</script>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Комоды и тумбы на заказ в Москве",
+  "description": "Современные и классические модели под любые размеры и интерьер. Доставка и сборка под ключ.",
+  "provider": {
+    "@type": "Organization",
+    "name": "vsize.ru",
+    "url": "https://vsize.ru",
+    "logo": "https://vsize.ru/ico.png",
+    "telephone": "+7 913 787 04 04",
+    "email": "info@vsize.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Примерная, д. 1",
+      "addressLocality": "Москва",
+      "postalCode": "101000",
+      "addressCountry": "RU"
+    }
+  },
+  "areaServed": { "@type": "City", "name": "Москва" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Каталог комодов и тумб на заказ",
+    "itemListElement": [
+      <% gallery.forEach(function(item){ %>
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "<%= item.name %>",
+          "image": "<%= item.image %>",
+          "description": "<%= item.description %>",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://vsize.ru/komody-i-tumby-na-zakaz",
+            "priceCurrency": "RUB",
+            "price": "<%= item.price %>",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2026-12-31"
+          }
+        }
+      }<%= gallery.indexOf(item) < gallery.length - 1 ? ',' : '' %>
+      <% }) %>
+    ]
+  },
+  "review": [
+    <% reviews.forEach(function(review){ %>
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "<%= review.author %>" },
+      "reviewBody": "<%= review.body %>",
+      "reviewRating": { "@type": "Rating", "ratingValue": "<%= review.rating %>", "bestRating": "5" }
+    }<%= reviews.indexOf(review) < reviews.length -1 ? ',' : '' %>
+    <% }) %>
+  ],
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://vsize.ru/api/send-mail",
+      "inLanguage": "ru-RU",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/AndroidPlatform",
+        "http://schema.org/iOSPlatform"
+      ]
+    },
+    "result": { "@type": "Order", "name": "Заказ комода или тумбы на сайте" }
+  }
+}
+</script>
+
+</body>
+</html>

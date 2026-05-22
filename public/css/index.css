@@ -131,7 +131,10 @@ footer {
   padding: 40px 80px;
   text-align: center;
 }
-
+footer a {
+  color: #FF6F00;
+  text-decoration: none;
+}
 /* RESPONSIVE */
 @media(max-width: 900px){
   header {padding: 20px;}

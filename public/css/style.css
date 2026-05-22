@@ -102,7 +102,15 @@ footer {
     width: calc(100% - 40px) ;
     bottom: 0;
 }
-
+footer a {
+  color: #FF6F00;
+  text-decoration: none;
+  transition: all ease 1s;
+}
+footer a:hover {
+  color: #ec751a;
+ 
+}
 /* style PROJECTS */
 .price-section {
     padding: 20px;

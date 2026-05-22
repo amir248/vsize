@@ -47,6 +47,7 @@ header {
     z-index: 10;
     text-align: center;
     /* transition: all ease 1s; */
+    align-items: center;
 }
 .h1 {
   font-size:33px;
@@ -74,7 +75,11 @@ header nav ul li a {
     text-decoration: none;
     font-weight: bold;
 }
+/* 
+.menu{
+    display:grid;
 
+} */
 /* menu */
 .menu-list {
     height:85px;

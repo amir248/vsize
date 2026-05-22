@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детская мебель на заказ в Москве | Vsize.ru</title>
+    <meta name="description" content="Детская мебель на заказ: кровати, шкафы, стеллажи и комплекты под любые размеры и интерьер. Доставка и сборка под ключ.">
+
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/customPage.css">
+</head>
+<body>
+
+
+<header class="page-header">
+    <h1>Детская мебель на заказ в Москве</h1>
+    <%- include('nav') %>
+</header>
+<p>Кровати, шкафы, стеллажи и комплекты под любые размеры и интерьер. Доставка и сборка под ключ.</p>
+
+<!-- Блок преимуществ -->
+<section id="advantages">
+    <h2>Почему выбирают нас</h2>
+    <ul>
+        <li>Индивидуальные проекты под размеры комнаты</li>
+        <li>Безопасные материалы для детей</li>
+        <li>Быстрая сборка и доставка</li>
+        <li>Современный дизайн и высокое качество</li>
+    </ul>
+</section>
+
+<!-- Процесс заказа -->
+<section id="process">
+    <h2>Как мы работаем</h2>
+    <ol>
+        <li>Вы оставляете заявку на сайте или звоните</li>
+        <li>Наш дизайнер согласовывает проект и размеры</li>
+        <li>Производство мебели по индивидуальному заказу</li>
+        <li>Доставка и сборка в удобное для вас время</li>
+    </ol>
+</section>
+
+<!-- Галерея мебели -->
+<section id="gallery">
+    <h2>Наши работы</h2>
+    <div class="gallery-grid">
+        <% 
+        const gallery = [
+            { name: "Кровать-чердак с рабочей зоной", image: "/images/kids1.jpg", description: "Кровать-чердак с рабочим местом и шкафами под заказ", price: 35000 },
+            { name: "Шкаф для детской комнаты", image: "/images/kids2.jpg", description: "Просторный шкаф для одежды и игрушек", price: 22000 },
+            { name: "Стеллажи и полки", image: "/images/kids3.jpg", description: "Стеллажи и полки для книг и игрушек под любые размеры", price: 15000 }
+        ];
+
+        gallery.forEach(function(item) { %>
+            <div class="gallery-item">
+                <img src="<%= item.image %>" alt="<%= item.name %>">
+                <h3><%= item.name %></h3>
+                <p><%= item.description %></p>
+            </div>
+        <% }) %>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <dl>
+        <dt>Сколько времени занимает изготовление детской мебели?</dt>
+        <dd>От 2 до 4 недель в зависимости от сложности проекта и размера заказа.</dd>
+
+        <dt>Можно ли выбрать цвет и материал фасадов?</dt>
+        <dd>Да, все проекты индивидуальны, и вы можете выбрать любые цвета и материалы.</dd>
+
+        <dt>Предоставляете ли вы сборку?</dt>
+        <dd>Да, доставка и сборка включены в стоимость.</dd>
+
+        <dt>Можно ли сделать мебель по своим эскизам?</dt>
+        <dd>Да, наши дизайнеры помогут адаптировать ваш проект под реальные размеры комнаты.</dd>
+    </dl>
+</section>
+
+<!-- Форма заказа -->
+<section id="order-form">
+    <h2>Рассчитайте стоимость детской мебели</h2>
+    <form action="/send-order" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон / WhatsApp" required>
+        <input type="text" name="address" placeholder="Адрес" required>
+        <input type="number" name="area" placeholder="Площадь комнаты (кв.м)" required>
+        <textarea name="details" placeholder="Дополнительно (тип мебели, цвета)" rows="3"></textarea>
+        <button type="submit" class="cta-button">Получить расчет</button>
+    </form>
+</section>
+
+<!-- Отзывы -->
+<section id="reviews">
+    <h2>Отзывы клиентов</h2>
+    <% 
+    const reviews = [
+        { author: "Мария", body: "Мебель сделали качественно и в срок, ребенок в восторге!", rating: 5 },
+        { author: "Дмитрий", body: "Отличная работа! Современный дизайн и удобная сборка.", rating: 5 },
+        { author: "Александра", body: "Все сделали точно под размеры, ребенок в восторге!", rating: 5 }
+    ];
+
+    reviews.forEach(function(review) { %>
+        <div class="review">
+            <strong><%= review.author %></strong>
+            <p><%= review.body %></p>
+            <span>Оценка: <%= review.rating %> / 5</span>
+        </div>
+    <% }) %>
+</section>
+
+<%- include('footer') %>
+<script defer="" src="js/main.js"></script>
+<!-- JS для отправки формы через fetch -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('#order-form form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            name: form.name.value.trim(),
+            phone: form.phone.value.trim(),
+            address: form.address.value.trim(),
+            area: form.area.value.trim(),
+            details: form.details.value.trim()
+        };
+        if (!formData.name || !formData.phone || !formData.address || !formData.area) {
+            alert('Пожалуйста, заполните все обязательные поля!');
+            return;
+        }
+        fetch(form.action, {
+            method: form.method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                alert('Спасибо! Ваш заказ принят. Мы свяжемся с вами.');
+                form.reset();
+            } else {
+                alert('Ошибка при отправке. Попробуйте позже.');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Ошибка сети. Попробуйте позже.');
+        });
+    });
+});
+</script>
+
+</body>
