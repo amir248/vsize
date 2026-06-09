@@ -2,13 +2,22 @@
   "name": "vsize",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/amir248/vsize#readme",
+  "bugs": {
+    "url": "https://github.com/amir248/vsize/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amir248/vsize.git"
+  },
+  "license": "ISC",
+  "author": "Amir",
+  "type": "commonjs",
   "main": "vsize.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "dotenv": "^17.4.2",
     "ejs": "^5.0.2",

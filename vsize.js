@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const pool = require('./modules/db');
 
-const PORT = 3000;
+const PORT = 3779;
 
 // импортируем email.js модуль
 const mailerRouter = require('./modules/email');
